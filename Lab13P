@@ -26,4 +26,26 @@ try:
     print("Етап 1 завершено: Створено файли students.csv та students.json.")
 except Exception as e:
     print(f"Помилка під час роботи з файлами в Етапі 1: {e}")
+# Етап 2. Код для другого студента (Литвиненко Роман)
+# Завдання: Переписати дані з students.json у students_updated.csv і додати нові рядки
+try:
+    # Читання з JSON і запис у новий CSV-файл students_updated.csv
+    with open("students.json", mode="r", encoding="utf-8") as json_file:
+        data = json.load(json_file)
 
+    with open("students_updated.csv", mode="w", newline='', encoding="utf-8") as csv_file:
+        fieldnames = ["ID", "Name", "Age", "Grade"]
+        writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+        writer.writeheader()
+
+        # Запис існуючих даних
+        for row in data:
+            writer.writerow(row)
+
+        # Додавання нових рядків
+        writer.writerow({"ID": 4, "Name": "Андрій Власенко", "Age": 21, "Grade": "B"})
+        writer.writerow({"ID": 5, "Name": "Олексій Соколов", "Age": 22, "Grade": "C"})
+
+    print("Етап 2 завершено: Створено файл students_updated.csv.")
+except Exception as e:
+    print(f"Помилка під час роботи з файлами в Етапі 2: {e}")
