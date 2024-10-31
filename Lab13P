@@ -69,3 +69,26 @@ except Exception as e:
     print("Етап 2 завершено: Створено файл students_updated.csv.")
 except Exception as e:
     print(f"Помилка під час роботи з файлами в Етапі 2: {e}")
+# Етап 4. Код для четвертого студента (Дворнік Олександр)
+# Завдання: Переписати дані з students_final.json у students_v4.csv і додати нові рядки
+try:
+    # Читання з JSON і запис у CSV students_v4.csv
+    with open("students_final.json", mode="r", encoding="utf-8") as json_file:
+        data = json.load(json_file)
+
+    with open("students_v4.csv", mode="w", newline='', encoding="utf-8") as csv_file:
+        fieldnames = ["ID", "Name", "Age", "Grade"]
+        writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+        writer.writeheader()
+
+        # Запис існуючих даних
+        for row in data:
+            writer.writerow(row)
+
+        # Додавання нових рядків
+        writer.writerow({"ID": 8, "Name": "Ігор Борисенко", "Age": 23, "Grade": "C"})
+        writer.writerow({"ID": 9, "Name": "Лариса Коваль", "Age": 21, "Grade": "B"})
+
+    print("Етап 4 завершено: Створено файл students_v4.csv.")
+except Exception as e:
+    print(f"Помилка під час роботи з файлами в Етапі 4: {e}")
