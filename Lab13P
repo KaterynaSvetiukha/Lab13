@@ -36,6 +36,26 @@ try:
     with open("students_updated.csv", mode="w", newline='', encoding="utf-8") as csv_file:
         fieldnames = ["ID", "Name", "Age", "Grade"]
         writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+# Етап 3. Код для третього студента (Светюха Катерина)
+# Завдання: Переписати дані з students_updated.csv у students_final.json і додати нові рядки
+try:
+    # Читання з CSV і запис у JSON students_final.json
+    data = []
+    with open("students_updated.csv", mode="r", encoding="utf-8") as csv_file:
+        reader = csv.DictReader(csv_file)
+        for row in reader:
+            data.append(row)
+
+    # Додавання нових рядків
+    data.append({"ID": 6, "Name": "Тетяна Малюк", "Age": 20, "Grade": "A"})
+    data.append({"ID": 7, "Name": "Максим Зайцев", "Age": 19, "Grade": "B"})
+
+    with open("students_final.json", mode="w", encoding="utf-8") as json_file:
+        json.dump(data, json_file, ensure_ascii=False, indent=4)
+
+    print("Етап 3 завершено: Створено файл students_final.json.")
+except Exception as e:
+    print(f"Помилка під час роботи з файлами в Етапі 3: {e}")
         writer.writeheader()
 
         # Запис існуючих даних
