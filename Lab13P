@@ -1,1 +1,29 @@
+import csv
+import json
+
+# Етап 1. Код для першого студента (Кратенко Руслан)
+# Завдання: Створити файл students.csv і записати кілька рядків, а також записати їх у JSON
+try:
+    # Створення CSV-файлу students.csv
+    with open("students.csv", mode="w", newline='', encoding="utf-8") as csv_file:
+        fieldnames = ["ID", "Name", "Age", "Grade"]
+        writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+        writer.writeheader()
+        writer.writerow({"ID": 1, "Name": "Олена Коваленко", "Age": 19, "Grade": "A"})
+        writer.writerow({"ID": 2, "Name": "Іван Іванов", "Age": 20, "Grade": "B"})
+        writer.writerow({"ID": 3, "Name": "Марія Петренко", "Age": 18, "Grade": "A"})
+
+    # Переписування в JSON-файл students.json
+    data = []
+    with open("students.csv", mode="r", encoding="utf-8") as csv_file:
+        reader = csv.DictReader(csv_file)
+        for row in reader:
+            data.append(row)
+
+    with open("students.json", mode="w", encoding="utf-8") as json_file:
+        json.dump(data, json_file, ensure_ascii=False, indent=4)
+
+    print("Етап 1 завершено: Створено файли students.csv та students.json.")
+except Exception as e:
+    print(f"Помилка під час роботи з файлами в Етапі 1: {e}")
 
