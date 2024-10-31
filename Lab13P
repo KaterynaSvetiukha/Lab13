@@ -92,3 +92,23 @@ try:
     print("Етап 4 завершено: Створено файл students_v4.csv.")
 except Exception as e:
     print(f"Помилка під час роботи з файлами в Етапі 4: {e}")
+# Етап 5. Код для п’ятого студента (Спориш Владислав)
+# Завдання: Переписати дані з students_v4.csv у students_final_v5.json і додати нові рядки
+try:
+    # Читання з CSV і запис у фінальний JSON-файл students_final_v5.json
+    data = []
+    with open("students_v4.csv", mode="r", encoding="utf-8") as csv_file:
+        reader = csv.DictReader(csv_file)
+        for row in reader:
+            data.append(row)
+
+    # Додавання нових рядків
+    data.append({"ID": 10, "Name": "Світлана Рибак", "Age": 20, "Grade": "A"})
+    data.append({"ID": 11, "Name": "Олег Тарасенко", "Age": 22, "Grade": "B"})
+
+    with open("students_final_v5.json", mode="w", encoding="utf-8") as json_file:
+        json.dump(data, json_file, ensure_ascii=False, indent=4)
+
+    print("Етап 5 завершено: Створено файл students_final_v5.json.")
+except Exception as e:
+    print(f"Помилка під час роботи з файлами в Етапі 5: {e}")
