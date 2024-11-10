@@ -36,7 +36,7 @@ try:
     with open("students_updated.csv", mode="w", newline='', encoding="utf-8") as csv_file:
         fieldnames = ["ID", "Name", "Age", "Grade"]
         writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
-# Етап 3. Код для третього студента (Светюха Катерина)
+# Етап 3. Код для третього студента (Светюха Катерина) 
 # Завдання: Переписати дані з students_updated.csv у students_final.json і додати нові рядки
 try:
     # Читання з CSV і запис у JSON students_final.json
